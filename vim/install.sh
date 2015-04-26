@@ -2,10 +2,16 @@
 
 set -e
 
-DIR=$(dirname $0)
+if [ $# -eq 1 ] && [ $1 = "--update" ];
+then
+    update=1
+fi
 
+dir=$(dirname $0)
+
+# Copy .vimrc
 echo "Copying .vimrc.."
-cp $DIR"/".vimrc ~/.vimrc
+cp $dir/.vimrc ~/.vimrc
 
 # Install Pathogen
 echo "Installing Pathogen.."
@@ -14,17 +20,25 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Plugins
 clone_plugin() {
-    if [ ! -d ~/.vim/bundle/$2 ]; then
-        echo " ..$2."
-        git clone $1 ~/.vim/bundle/$2 --quiet
+    dir_bundle=~/.vim/bundle/
+    name=$(echo $1 | rev | cut -d / -f 1 | rev | cut -d . -f 1)
+    if [ ! -d $dir_bundle$name ];
+    then
+        echo " ..$name."
+        git clone $1 $dir_bundle$name --quiet
     else
-        echo " ..$2 already installed."
+        echo " ..$name already installed."
+        if [ $update ];
+        then
+            echo " ..$name pulling."
+            git -C $dir_bundle$name pull
+        fi
     fi
 }
 
 echo "Installing plugins.."
-clone_plugin "https://github.com/chriskempson/base16-vim.git" "base16-vim"
-clone_plugin "git://git.wincent.com/command-t.git" "command-t"
-clone_plugin "https://github.com/xsbeats/vim-blade.git" "vim-blade"
+clone_plugin "https://github.com/chriskempson/base16-vim.git"
+clone_plugin "git://git.wincent.com/command-t.git"
+clone_plugin "https://github.com/xsbeats/vim-blade.git"
 
 echo "vim setup done!"

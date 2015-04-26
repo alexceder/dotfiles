@@ -2,9 +2,10 @@
 
 set -e
 
-DIR=$(dirname $0)
+dir=$(dirname $0)
 
+# Copy .tmux.conf
 echo "Copying .tmux.conf"
-cp $DIR"/".tmux.conf ~/.tmux.conf
+cp $dir/.tmux.conf ~/.tmux.conf
 
 echo "tmux setup done!"

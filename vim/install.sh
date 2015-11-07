@@ -37,9 +37,11 @@ clone_plugin() {
 }
 
 echo "Installing plugins.."
-clone_plugin "https://github.com/chriskempson/base16-vim.git"
 clone_plugin "git://git.wincent.com/command-t.git"
-clone_plugin "https://github.com/xsbeats/vim-blade.git"
+clone_plugin "git://github.com/airblade/vim-gitgutter.git"
+clone_plugin "git://github.com/chriskempson/base16-vim.git"
 clone_plugin "git://github.com/mustache/vim-mustache-handlebars.git"
+clone_plugin "git://github.com/tpope/vim-haml.git"
+clone_plugin "git://github.com/xsbeats/vim-blade.git"
 
 echo "vim setup done!"

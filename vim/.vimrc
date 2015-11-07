@@ -1,12 +1,13 @@
 " .vimrc file for Alexander Cederblad <alexcederblad@gmail.com>
 " Use it as you wish.
+"
 
 " Pathogen
 execute pathogen#infect()
 
-set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*
+set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site
 
-" Syntax
+" Colors
 syntax enable
 set t_Co=256
 set background=dark
@@ -16,6 +17,13 @@ let base16colorspace=256
 highlight visual term=reverse cterm=reverse ctermbg=black
 highlight search term=reverse cterm=reverse ctermbg=black
 highlight LineNr ctermbg=black
+highlight Pmenu ctermfg=01 ctermbg=07
+highlight PmenuSel ctermfg=black ctermbg=01
+highlight GitGutterAdd ctermfg=green ctermbg=black
+highlight GitGutterChange ctermfg=yellow ctermbg=black
+highlight GitGutterDelete ctermfg=red ctermbg=black
+highlight GitGutterChangeDelete ctermfg=yellow ctermbg=black
+
 
 " Statusline coniguration
 " TODO: Maybe fix the colors as
@@ -69,12 +77,6 @@ let g:CommandTMaxFiles = 50000
 let g:CommandTHighlightColor = 'Constant'
 noremap <F5> :CommandTFlush<CR>
 
-" Move around splits with <c-hjkl>
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-l> <c-w>l
-
 imap <c-c> <esc>
 
 nmap <leader>t :!make tests<cr>
@@ -91,16 +93,16 @@ nmap <leader>C ^xx$xx
 
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
-"function! InsertTabWrapper()
-"    let col = col('.') - 1
-"    if !col || getline('.')[col - 1] !~ '\k'
-"        return "\<tab>"
-"    else
-"        return "\<c-p>"
-"    endif
-"endfunction
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-"inoremap <s-tab> <c-n>
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-n>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-p>
 
 " Edit/View file in current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>

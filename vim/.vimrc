@@ -14,15 +14,16 @@ set background=dark
 colorscheme base16-ocean
 filetype plugin indent on
 let base16colorspace=256
-highlight visual term=reverse cterm=reverse ctermbg=black
-highlight search term=reverse cterm=reverse ctermbg=black
-highlight LineNr ctermbg=black
-highlight Pmenu ctermfg=01 ctermbg=07
-highlight PmenuSel ctermfg=black ctermbg=01
-highlight GitGutterAdd ctermfg=green ctermbg=black
-highlight GitGutterChange ctermfg=yellow ctermbg=black
-highlight GitGutterDelete ctermfg=red ctermbg=black
-highlight GitGutterChangeDelete ctermfg=yellow ctermbg=black
+highlight Normal ctermbg=none
+highlight visual ctermbg=black
+highlight search ctermbg=black ctermfg=white
+highlight LineNr ctermbg=none
+highlight Pmenu ctermfg=red ctermbg=gray
+highlight PmenuSel ctermfg=black ctermbg=red
+highlight GitGutterAdd ctermfg=green ctermbg=none
+highlight GitGutterChange ctermfg=yellow ctermbg=none
+highlight GitGutterDelete ctermfg=red ctermbg=none
+highlight GitGutterChangeDelete ctermfg=yellow ctermbg=none
 
 
 " Statusline coniguration

@@ -1,6 +1,6 @@
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="dstufft-layback"
+ZSH_THEME="layback"
 
 plugins=(git)
 

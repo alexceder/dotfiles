@@ -7,11 +7,13 @@ then
     update=1
 fi
 
-dir=$(dirname $0)
+dir=`dirname $0`
 
-# Copy .vimrc
-echo "Copying .vimrc.."
+# Copy .vimrc and .vim folder
+echo "Copying .vimrc.b."
 cp $dir/.vimrc ~/.vimrc
+mkdir -p ~/.vim
+cp -r $dir/.vim/* ~/.vim
 
 # Install Pathogen
 echo "Installing Pathogen.."
@@ -21,7 +23,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Plugins
 clone_plugin() {
     dir_bundle=~/.vim/bundle/
-    name=$(echo $1 | rev | cut -d / -f 1 | rev | cut -d . -f 1)
+    name=`echo $1 | rev | cut -d / -f 1 | rev | cut -d . -f 1`
     if [ ! -d $dir_bundle$name ];
     then
         echo " ..$name."

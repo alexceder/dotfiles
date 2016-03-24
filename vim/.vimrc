@@ -14,17 +14,30 @@ set background=dark
 colorscheme base16-ocean
 filetype plugin indent on
 let base16colorspace=256
-highlight Normal ctermbg=none
+
+highlight normal ctermbg=none
 highlight visual ctermbg=black
 highlight search ctermbg=black ctermfg=white
+
 highlight LineNr ctermbg=none
+
 highlight Pmenu ctermfg=red ctermbg=gray
 highlight PmenuSel ctermfg=black ctermbg=red
+
 highlight GitGutterAdd ctermfg=green ctermbg=none
 highlight GitGutterChange ctermfg=yellow ctermbg=none
 highlight GitGutterDelete ctermfg=red ctermbg=none
 highlight GitGutterChangeDelete ctermfg=yellow ctermbg=none
 
+highlight TabLineFill ctermfg=white ctermbg=black
+highlight TabLine ctermfg=gray ctermbg=black
+highlight TabLineSel ctermfg=red ctermbg=black
+
+highlight StatusLine ctermbg=black ctermfg=white
+highlight StatusLineNC ctermbg=black ctermfg=black
+highlight VertSplit ctermbg=black ctermfg=black
+
+highlight MatchParen ctermbg=black ctermfg=white
 
 " Statusline coniguration
 " TODO: Maybe fix the colors as

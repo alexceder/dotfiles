@@ -1,10 +1,10 @@
 " .vimrc file for Alexander Cederblad <alexcederblad@gmail.com>
 " Use it as you wish.
-"
 
 " Pathogen
 execute pathogen#infect()
 
+" Wildignore
 set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site
 
 " Colors
@@ -43,7 +43,7 @@ highlight MatchParen ctermbg=black ctermfg=white
 " TODO: Maybe fix the colors as
 " hi User1 guifg=#ffdad8 guibg=#880c0e
 " ..
-" Source: http://stackoverflow.com/a/10416234
+" See: http://stackoverflow.com/a/10416234
 set statusline=
 set statusline+=%7*\[%n]                             " Buffer number
 set statusline+=%1*\ %<%F\                           " Filepath
@@ -61,8 +61,8 @@ set hidden
 set showmode
 set showcmd
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set autoindent
 set number
 set hlsearch
@@ -71,6 +71,8 @@ set encoding=utf-8
 set history=1000
 set backspace=2
 set noswapfile
+set modeline
+set modelines=5
 
 " Key mappings
 nmap <c-up> ddkP

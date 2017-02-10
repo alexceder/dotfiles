@@ -53,6 +53,8 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 
+# Either -G flag or CLICOLOR variable for colors.
+export CLICOLOR=1
 alias ll='ls -l'
 alias l='ls -la'
 

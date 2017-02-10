@@ -1,6 +1,8 @@
 # Completion
-autoload -U compinit && compinit
-zstyle ':completion:*:*:*:*:*' menu select
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*'  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|=*' 'l:|=* r:|=*'
 zmodload -i zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 

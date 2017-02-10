@@ -11,7 +11,7 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=2000
 export SAVEHIST=$HISTSIZE
 
-# Key bindings
+# Delete key does not work by default for some reason.
 bindkey '^[[3~' delete-char
 
 # Prompt
@@ -23,9 +23,8 @@ function git_prompt_info() {
 }
 
 function parse_git_dirty() {
-  local STATUS="$(command git status --porcelain 2> /dev/null | tail -n1)"
-
-  if [[ -n $STATUS ]]; then
+  local status="$(command git status --porcelain 2> /dev/null | tail -n1)"
+  if [[ -n $status ]]; then
     echo "$ZSH_GIT_PROMPT_DIRTY"
   else
     echo "$ZSH_GIT_PROMPT_CLEAN"

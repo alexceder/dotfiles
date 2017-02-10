@@ -4,6 +4,13 @@ zstyle ':completion:*:*:*:*:*' menu select
 zmodload -i zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+# History
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=2000
+export SAVEHIST=$HISTSIZE
+
 # Key bindings
 bindkey '^[[3~' delete-char
 

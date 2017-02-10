@@ -58,11 +58,15 @@ export CLICOLOR=1
 alias ll='ls -l'
 alias l='ls -la'
 
-# PATH
-export PATH="$HOME/.bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-
 # rbenv
 eval "$(rbenv init - --no-rehash)"
+
+# PATH
+export PATH="${HOME}/.bin:${PATH}"
+export PATH="./bin:${PATH}"
+
+# Java
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export ANDROID_HOME="${HOME}/Library/Android/sdk"
 
 . ~/.zshrc.local

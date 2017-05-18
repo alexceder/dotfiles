@@ -2,18 +2,18 @@
 
 set -e
 
-if [ $# -eq 1 ] && [ $1 = "--update" ];
+if [ $# -eq 1 ] && [ "$1" = "--update" ];
 then
     update=1
 fi
 
-dir=`dirname $0`
+dir=$(dirname "$0")
 
 # Copy .vimrc and .vim folder
-echo "Copying .vimrc.b."
-cp $dir/.vimrc ~/.vimrc
+echo "Copying .vimrc."
+cp "$dir"/.vimrc ~/.vimrc
 mkdir -p ~/.vim
-cp -r $dir/.vim/* ~/.vim
+cp -r "$dir"/.vim/* ~/.vim
 
 # Install Pathogen
 echo "Installing Pathogen.."
@@ -22,18 +22,18 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Plugins
 clone_plugin() {
-    dir_bundle=~/.vim/bundle/
-    name=`echo $1 | rev | cut -d / -f 1 | rev | cut -d . -f 1`
-    if [ ! -d $dir_bundle$name ];
+    name=$(echo "$1" | rev | cut -d / -f 1 | rev | cut -d . -f 1)
+    path=~/.vim/bundle/"$name"
+    if [ ! -d "$path" ];
     then
         echo " ..$name."
-        git clone $1 $dir_bundle$name --quiet
+        git clone "$1" "$path" --quiet
     else
         echo " ..$name already installed."
-        if [ $update ];
+        if [ "$update" ];
         then
             echo " ..$name pulling."
-            git -C $dir_bundle$name pull
+            git -C "$path" pull
         fi
     fi
 }

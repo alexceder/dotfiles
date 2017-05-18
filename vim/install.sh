@@ -39,9 +39,18 @@ clone_plugin() {
 }
 
 echo "Installing plugins.."
-clone_plugin "git://git.wincent.com/command-t.git"
-clone_plugin "git://github.com/airblade/vim-gitgutter.git"
-clone_plugin "git://github.com/chriskempson/base16-vim.git"
-clone_plugin "git://github.com/tpope/vim-haml.git"
+clone_plugin "https://github.com/AndrewRadev/splitjoin.vim"
+clone_plugin "https://github.com/airblade/vim-gitgutter.git"
+clone_plugin "https://github.com/chriskempson/base16-vim.git"
+clone_plugin "https://github.com/mxw/vim-jsx.git"
+clone_plugin "https://github.com/pangloss/vim-javascript.git"
+clone_plugin "https://github.com/slim-template/vim-slim.git"
+clone_plugin "https://github.com/tpope/vim-bundler.git"
+clone_plugin "https://github.com/tpope/vim-commentary.git"
+clone_plugin "https://github.com/tpope/vim-eunuch.git"
+clone_plugin "https://github.com/tpope/vim-fugitive.git"
+clone_plugin "https://github.com/tpope/vim-haml.git"
+clone_plugin "https://github.com/tpope/vim-markdown.git"
+clone_plugin "https://github.com/wincent/command-t.git"
 
 echo "vim setup done!"

@@ -4,15 +4,26 @@
 " Pathogen
 execute pathogen#infect()
 
-" Wildignore
-set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site
+" Plugins {{{
+" For vim-commentary.
+autocmd FileType cpp setlocal commentstring=\/\/\ %s
 
-" Colors
+" Enable JSX in regular .js files.
+let g:jsx_ext_required = 0
+" }}}
+
+" Wildignore
+set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site,CMakeFiles,cmake_install.cmake,CMakeCache.txt
+
+" Ctags
+set tags=tags,.git/tags
+
+" Colors {{{
 syntax enable
+filetype plugin indent on
 set t_Co=256
 set background=dark
 colorscheme base16-ocean
-filetype plugin indent on
 let base16colorspace=256
 
 highlight normal ctermbg=none
@@ -21,7 +32,7 @@ highlight search ctermbg=black ctermfg=white
 
 highlight LineNr ctermbg=none
 
-highlight Pmenu ctermfg=red ctermbg=gray
+highlight Pmenu ctermfg=red ctermbg=black
 highlight PmenuSel ctermfg=black ctermbg=red
 
 highlight GitGutterAdd ctermfg=green ctermbg=none
@@ -36,14 +47,18 @@ highlight TabLineSel ctermfg=red ctermbg=black
 highlight StatusLine ctermbg=black ctermfg=white
 highlight StatusLineNC ctermbg=black ctermfg=black
 highlight VertSplit ctermbg=black ctermfg=black
-
 highlight MatchParen ctermbg=black ctermfg=white
 
-" Statusline coniguration
-" TODO: Maybe fix the colors as
-" hi User1 guifg=#ffdad8 guibg=#880c0e
-" ..
-" See: http://stackoverflow.com/a/10416234
+highlight SpellBad cterm=underline ctermbg=none ctermfg=none
+
+highlight SpecialKey ctermfg=black
+" }}}
+
+" Statusline {{{
+" TODO: Maybe fix the colors as..
+"   hi User1 guifg=#ffdad8 guibg=#880c0e
+"   ..
+"   See: http://stackoverflow.com/a/10416234
 set statusline=
 set statusline+=%7*\[%n]                             " Buffer number
 set statusline+=%1*\ %<%F\                           " Filepath
@@ -52,16 +67,18 @@ set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''} " Encoding
 set statusline+=%8*\ %=\ row:\ %l/%L\ (%p%%)\        " Current row/Total rows (Position in %)
 set statusline+=%9*\ col:\ %c\ \                     " Column number
 set statusline+=\ \ %m%r%w\ %P\ \                    " Status (Modified/Readonly & Top/Bot)
+" }}}
 
-" Options
-let mapleader=","
-set laststatus=2
+" Options {{{
 set nocompatible
+set laststatus=2
 set hidden
 set showmode
 set showcmd
+set cmdheight=2
 set expandtab
 set shiftwidth=2
+set shiftround
 set tabstop=2
 set autoindent
 set number
@@ -73,66 +90,112 @@ set backspace=2
 set noswapfile
 set modeline
 set modelines=5
+set incsearch
+set wildmenu
+set mouse=a
+set list
+set listchars=nbsp:␣,trail:·,extends:⟩,precedes:⟨
+set foldmethod=marker
+" }}}
 
-" Key mappings
-nmap <c-up> ddkP
-nmap <c-k> ddkP
-nmap <c-down> ddp
-nmap <c-j> ddp
+" Key mappings {{{
+let mapleader=","
 
-vmap <c-up> xkP`[V`]
-vmap <c-k> xkP`[V`]
-vmap <c-down> xp`[V`]
-vmap <c-j> xp`[V`]
+" Bubble movement for rows.
+nmap <C-K> ddkP
+nmap <C-J> ddp
+vmap <C-K> xkP`[V`]
+vmap <C-J> xp`[V`]
 
-vnorem // y/<c-r>"<cr>
+" Search for what is visually selected.
+vnorem // y/<C-R>"<CR>
 
-" Key mapping for the Command-T plug-in
-nmap <leader>p :CommandT<cr>
+" Jump to definition under the cursor.
+nmap gt :tag <C-R><C-W><CR>
+
+" Key mappings and settings for Command-T
+nmap <Leader>p :CommandT<CR>
+nmap <Leader>o :CommandTTag<CR>
+nmap <Leader>l :CommandTLine<CR>
+nmap <Leader>r :CommandTMRU<CR>
 let g:CommandTMaxFiles = 50000
+let g:CommandTMaxHeight = 30
 let g:CommandTHighlightColor = 'Constant'
 noremap <F5> :CommandTFlush<CR>
 
-imap <c-c> <esc>
+imap <C-C> <Esc>
 
-nmap <leader>t :!make tests<cr>
+nmap <Leader>t :!rspec<CR>
 
-vmap <leader>y "*y
+" Yank to clipboard.
+vmap <Leader>y "*y
 
-nmap <leader>m :nohlsearch<cr>
+nmap <Leader>m :nohlsearch<CR>
 
-nmap <leader>j :bn<cr>
-nmap <leader>k :bp<cr>
+" Flip through buffers.
+nmap <Leader>j :bn<CR>
+nmap <Leader>k :bp<CR>
 
-nmap <leader>c I/*<Esc>A*/<Esc>
-nmap <leader>C ^xx$xx
+nmap <Leader><Tab> :tabn<CR>
+" }}}
 
-" Multipurpose tab key
+" Multipurpose tab key {{{
 " Indent if we're at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-n>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-p>
+inoremap <Tab> <C-R>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-P>
+" }}}
 
-" Edit/View file in current directory
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
+" Edit/view file in current directory {{{
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+map <Leader>e :edit %%
+map <Leader>v :view %%
+" }}}
 
-" Rename current file
+" Rename current file {{{
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+map <Leader>n :call RenameFile()<CR>
+" }}}
+
+" Run an already mapped function in second tmux split {{{
+function! RunMappedCommandInSecondTmuxSplit(map)
+  let cmd = maparg(a:map)
+  if cmd[:1] == ':!'
+    let cmd = cmd[2:]
+  endif
+  if cmd[-4:] == '<CR>'
+    let cmd = cmd[:-5]
+  endif
+  let num_panes = system('tmux list-panes | wc -l | tr -s " "')[1:][:-2]
+  if num_panes == '2'
+    silent system('tmux send-keys -t bottom C-Z C-U C-L "' . cmd . '" C-M')
+    redraw!
+  else
+    echoerr 'Current window needs two panes (has ' . num_panes. ') to run: ' . cmd
+  endif
+endfunction
+map <Leader><Leader>t :call RunMappedCommandInSecondTmuxSplit('<Leader>t')<CR>
+" }}}
+
+" YAPF
+" See: https://github.com/google/yapf/tree/master/plugins
+map <C-Y> :call yapf#YAPF()<CR>
+
+" clang-format
+" See: https://clang.llvm.org/docs/ClangFormat.html#vim-integration
+nmap <Leader>f :pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>

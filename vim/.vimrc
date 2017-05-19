@@ -137,6 +137,8 @@ nmap <Leader>j :bn<CR>
 nmap <Leader>k :bp<CR>
 
 nmap <Leader><Tab> :tabn<CR>
+
+nmap <Leader>w :set wrap!<CR>
 " }}}
 
 " Multipurpose tab key {{{

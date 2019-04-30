@@ -15,6 +15,9 @@ endif
 
 " Enable JSX in regular .js files.
 let g:jsx_ext_required = 0
+
+let g:ale_linters = {'typescript': ['eslint']}
+let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
 " }}}
 
 " Wildignore

@@ -82,4 +82,9 @@ export PATH="./bin:${PATH}"
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
 
+# AWS
+export AWS_SDK_LOAD_CONFIG=1
+export AWS_PROFILE=fishbrain
+export AWS_DEFAULT_REGION=eu-west-1
+
 . ~/.zshrc.local

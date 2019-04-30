@@ -207,3 +207,19 @@ map <C-Y> :call yapf#YAPF()<CR>
 " clang-format
 " See: https://clang.llvm.org/docs/ClangFormat.html#vim-integration
 nmap <Leader>f :pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
+
+" colorcolumn
+set textwidth=80
+set colorcolumn=0
+highlight ColorColumn ctermbg=232
+nnoremap <leader>c :call ColorColumnToggle()<cr>
+let g:colorcolumn_is_active = 0
+function! ColorColumnToggle()
+  if g:colorcolumn_is_active
+    set colorcolumn=
+    let g:colorcolumn_is_active = 0
+  else
+    set colorcolumn=+1,+21,+41
+    let g:colorcolumn_is_active = 1
+  endif
+endfunction

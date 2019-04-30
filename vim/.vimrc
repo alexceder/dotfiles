@@ -119,15 +119,14 @@ vnorem // y/<C-R>"<CR>
 " Jump to definition under the cursor.
 nmap gt :tag <C-R><C-W><CR>
 
-" Key mappings and settings for Command-T
-nmap <Leader>p :CommandT<CR>
-nmap <Leader>o :CommandTTag<CR>
-nmap <Leader>l :CommandTLine<CR>
-nmap <Leader>r :CommandTMRU<CR>
-let g:CommandTMaxFiles = 50000
-let g:CommandTMaxHeight = 30
-let g:CommandTHighlightColor = 'Constant'
-noremap <F5> :CommandTFlush<CR>
+" Key mappings and settings for CtrlP
+nmap <Leader>p :CtrlP<CR>
+nmap <Leader>o :CtrlPTag<CR>
+nmap <Leader>l :CtrlPLine<CR>
+nmap <Leader>r :CtrlPMRU<CR>
+let g:ctrlp_max_files = 50000
+let g:ctrlp_max_height = 15
+noremap <F5> :CtrlPClearCache<CR>
 
 imap <C-C> <Esc>
 

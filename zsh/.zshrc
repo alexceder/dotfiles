@@ -68,6 +68,12 @@ alias l='ls -la'
 # rbenv
 eval "$(rbenv init - --no-rehash)"
 
+# Environment variables
+export PATH="/usr/local/sbin:${PATH}"
+export PATH="$HOME/.cargo/bin:${PATH}"
+export PATH="./bin:${PATH}"
+export PATH="${HOME}/.bin:${PATH}"
+
 # PATH
 export PATH="${HOME}/.bin:${PATH}"
 export PATH="./bin:${PATH}"

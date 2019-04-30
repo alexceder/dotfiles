@@ -18,7 +18,7 @@ let g:jsx_ext_required = 0
 " }}}
 
 " Wildignore
-set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site,CMakeFiles,cmake_install.cmake,CMakeCache.txt,system/*,__pycache__doc/*,_build,coverage
+set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site,CMakeFiles,cmake_install.cmake,CMakeCache.txt,system/*,doc/*,__pycache__,_build,coverage
 
 " Ctags
 set tags=tags,.git/tags

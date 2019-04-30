@@ -206,7 +206,7 @@ map <C-Y> :call yapf#YAPF()<CR>
 
 " clang-format
 " See: https://clang.llvm.org/docs/ClangFormat.html#vim-integration
-nmap <Leader>f :pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
+map <Leader>f :pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
 
 " colorcolumn
 set textwidth=80

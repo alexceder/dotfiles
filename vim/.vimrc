@@ -23,11 +23,12 @@ set wildignore+=*.dSYM,node_modules,bower_components,vendor/*,tmp,dist/*,_site,C
 " Ctags
 set tags=tags,.git/tags
 
-" Colors {{{
+" Colors & Style {{{
 syntax enable
 filetype plugin indent on
 set t_Co=256
 set background=dark
+set linespace=10
 colorscheme base16-ocean
 let base16colorspace=256
 

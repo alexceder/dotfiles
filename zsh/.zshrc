@@ -5,6 +5,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*'  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|=*' 'l:|=* r:|=*'
 zmodload -i zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+stty -ixon
 
 # History
 setopt hist_ignore_all_dups

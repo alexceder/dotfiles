@@ -7,6 +7,11 @@ zmodload -i zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 stty -ixon
 
+# WTF
+echo -ne '\033]6;1;bg;red;brightness;N\a'
+echo -ne '\033]6;1;bg;green;brightness;N\a'
+echo -ne '\033]6;1;bg;blue;brightness;N\a'
+
 # History
 setopt hist_ignore_all_dups
 setopt hist_ignore_space

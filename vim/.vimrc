@@ -17,8 +17,14 @@ endif
 " Enable JSX in regular .js files.
 let g:jsx_ext_required = 0
 
+let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_linters = {'typescript': ['eslint']}
 let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
+
+highlight ALEWarning ctermbg=232
+
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 " }}}
 
 " Wildignore
@@ -62,6 +68,9 @@ highlight MatchParen ctermbg=black ctermfg=white
 highlight SpellBad cterm=underline ctermbg=none ctermfg=none
 
 highlight SpecialKey ctermfg=black
+ghighlight CursorLine ctermbg=232
+
+highlight SignColumn ctermbg=none
 " }}}
 
 " Statusline {{{
@@ -106,6 +115,7 @@ set mouse=a
 set list
 set listchars=nbsp:␣,trail:·,extends:⟩,precedes:⟨
 set foldmethod=marker
+set updatetime=100
 " }}}
 
 " Key mappings {{{

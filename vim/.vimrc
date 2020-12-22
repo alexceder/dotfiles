@@ -139,8 +139,13 @@ nmap <Leader>o :CtrlPTag<CR>
 nmap <Leader>l :CtrlPLine<CR>
 nmap <Leader>r :CtrlPMRU<CR>
 let g:ctrlp_max_files = 50000
-let g:ctrlp_max_height = 15
-noremap <F5> :CtrlPClearCache<CR>
+let g:ctrlp_max_height = 20
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s --nocolor --hidden --ignore .git -g ""'
+  let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --others --exclude-standard']
+endif
 
 imap <C-C> <Esc>
 

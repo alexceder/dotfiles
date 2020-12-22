@@ -11,6 +11,7 @@ autocmd FileType cpp setlocal commentstring=\/\/\ %s
 " Make ack.vim use ag (The Silver Searcher)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " Enable JSX in regular .js files.

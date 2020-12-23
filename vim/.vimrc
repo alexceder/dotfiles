@@ -68,7 +68,7 @@ highlight MatchParen ctermbg=black ctermfg=white
 highlight SpellBad cterm=underline ctermbg=none ctermfg=none
 
 highlight SpecialKey ctermfg=black
-ghighlight CursorLine ctermbg=232
+highlight CursorLine ctermbg=232
 
 highlight SignColumn ctermbg=none
 " }}}

@@ -31,8 +31,7 @@ function git_prompt_info() {
 }
 
 function parse_git_dirty() {
-  local status="$(command git status --porcelain 2> /dev/null | tail -n1)"
-  if [[ -n $status ]]; then
+  if [[ -n $(command git status --porcelain 2> /dev/null | tail -n1) ]]; then
     echo "$ZSH_GIT_PROMPT_DIRTY"
   else
     echo "$ZSH_GIT_PROMPT_CLEAN"

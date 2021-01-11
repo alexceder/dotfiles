@@ -25,5 +25,3 @@ colors:
     cyan:    '#8abeb7'
     white:   '#c5c8c6'
 background_opacity: 0.9
-key_bindings:
-  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }

@@ -4,6 +4,7 @@ window:
     y: 14
   decorations: none
   startup_mode: Maximized
+  opacity: 0.96
 font:
   normal:
     family: "Source Code Pro"
@@ -24,4 +25,3 @@ colors:
     magenta: '#b294bb'
     cyan:    '#8abeb7'
     white:   '#c5c8c6'
-background_opacity: 0.9

@@ -9,7 +9,10 @@ execute pathogen#infect()
 autocmd FileType cpp setlocal commentstring=\/\/\ %s
 
 " Make ack.vim use ag (The Silver Searcher)
-if executable('ag')
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+elseif executable('ag')
   let g:ackprg = 'ag --vimgrep'
   set grepprg=ag\ --nogroup\ --nocolor
 endif

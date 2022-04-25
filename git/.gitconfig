@@ -1,5 +1,5 @@
 [alias]
-  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+	ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
 [core]
 	pager = less -S
 	excludesfile = ~/.gitignore

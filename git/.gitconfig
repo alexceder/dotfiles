@@ -1,0 +1,10 @@
+[alias]
+  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+[core]
+	pager = less -S
+	excludesfile = ~/.gitignore
+[init]
+	templatedir = ~/.git_template
+[user]
+	name = Alexander Cederblad
+	email = alexcederblad@gmail.com

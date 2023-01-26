@@ -64,9 +64,6 @@ export CLICOLOR=1
 alias ll='ls -l'
 alias l='ls -la'
 
-# rbenv
-eval "$(rbenv init - --no-rehash)"
-
 # Environment variables
 export PATH="/usr/local/sbin:${PATH}"
 export PATH="$HOME/.cargo/bin:${PATH}"
@@ -85,5 +82,8 @@ export PATH="./bin:${PATH}"
 export AWS_SDK_LOAD_CONFIG=1
 export AWS_PROFILE=fishbrain
 export AWS_DEFAULT_REGION=eu-west-1
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
 
 . ~/.zshrc.local

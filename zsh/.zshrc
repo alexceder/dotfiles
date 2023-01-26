@@ -86,4 +86,10 @@ export AWS_DEFAULT_REGION=eu-west-1
 # asdf
 . "$HOME/.asdf/asdf.sh"
 
+# Homebrew
+if [ -d "/opt/homebrew/bin" ]
+then
+  export PATH="/opt/homebrew/bin:${PATH}"
+fi
+
 . ~/.zshrc.local

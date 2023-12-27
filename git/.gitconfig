@@ -2,9 +2,10 @@
 	ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
 [core]
 	pager = less -S
-	excludesfile = ~/.gitignore
+	excludesFile = ~/.gitignore
 [init]
-	templatedir = ~/.git_template
+	templateDir = ~/.git_template
+	defaultBranch = main
 [user]
 	name = Alexander Cederblad
 	email = alexcederblad@gmail.com

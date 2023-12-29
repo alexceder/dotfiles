@@ -1,7 +1,0 @@
-Make sure vim is has ruby support.
-
-Ubuntu tested with `vim-nox`. Had to update ruby version and run:
-
-  cd ~/.vim/bundle/command-t/ruby/command-t
-  ruby extconf.rb
-  make

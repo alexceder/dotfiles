@@ -64,6 +64,13 @@ export CLICOLOR=1
 alias ll='ls -l'
 alias l='ls -la'
 
+# All roads lead to nvim
+alias n=nvim
+alias v=nvim
+alias vi=nvim
+alias nvi=nvim
+alias vim=nvim
+
 # Environment variables
 export PATH="/usr/local/sbin:${PATH}"
 export PATH="$HOME/.cargo/bin:${PATH}"
@@ -80,11 +87,11 @@ export PATH="./bin:${PATH}"
 
 # AWS
 export AWS_SDK_LOAD_CONFIG=1
-export AWS_PROFILE=fishbrain
+export AWS_PROFILE=fishbrain-production
 export AWS_DEFAULT_REGION=eu-west-1
 
 # asdf
-. "$HOME/.asdf/asdf.sh"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # Homebrew
 if [ -d "/opt/homebrew/bin" ]

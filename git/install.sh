@@ -4,8 +4,8 @@ set -e
 
 dir=$(dirname "$0")
 
-# Copy .gitconfig, .gitignore, and .git_template folder
-echo "Copying .gitconfig file and .git_template folder."
-cp "$dir"/.gitconfig ~/.gitconfig
-cp "$dir"/gitignore ~/.gitignore
-cp -r "$dir"/.git_template ~/.git_template
+echo "Copying config, ignore, and templates folder."
+mkdir -p ~/.config/git
+cp "$dir"/config ~/.config/config
+cp "$dir"/ignore ~/.config/ignore
+cp -r "$dir"/templates ~/.config/templates

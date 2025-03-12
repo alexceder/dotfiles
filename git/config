@@ -2,10 +2,11 @@
 	ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
 [core]
 	pager = less -S
-	excludesFile = ~/.gitignore
 [init]
-	templateDir = ~/.git_template
 	defaultBranch = main
+	templateDir = ~/.config/templates
 [user]
 	name = Alexander Cederblad
 	email = alexcederblad@gmail.com
+
+; vim: set ft=gitconfig

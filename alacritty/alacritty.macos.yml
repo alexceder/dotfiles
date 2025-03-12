@@ -1,2 +1,0 @@
-key_bindings:
-  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }

@@ -9,11 +9,9 @@ fi
 
 dir=$(dirname "$0")
 
-# Copy .vimrc and .vim folder
 echo "Copying .vimrc."
-cp "$dir"/.vimrc ~/.vimrc
 mkdir -p ~/.vim
-cp -r "$dir"/.vim/* ~/.vim
+cp -r "$dir"/* ~/.vim
 
 # Install Pathogen
 echo "Installing Pathogen.."
